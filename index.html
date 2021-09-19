@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>pertinences</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+		<meta name="keywords" content="Discord">
+		<meta name="author" content="pertinences">
+		<meta name="theme-color" content="#ffffff">
+		<meta name="description" content="pertinences's website">
+		<meta name="og:image" content="https://dopa.pw/imgs/logo.png">
+		<link rel="icon" type="image/png" href="https://dopa.pw/imgs/logo.png">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap" rel="stylesheet">
+		<style>
+			/* Trash at CSS, excuse me. */
+
+			/* Body */
+			body {
+				-webkit-tap-highlight-color: transparent;
+				background-color: #111;
+				color: #fff;
+				font-family: Lato, 'Segoe UI', Arial, Helvetica, sans-serif;
+				text-align: center;
+			}
+
+			/* Headings */
+			h1 {
+				font-size: 40px;
+			}
+
+			/* Paragraphs */
+			p {
+				font-size: 25px;
+			}
+
+			/* Hyperlinks */
+			a {
+				color: #fff;
+				text-decoration: none;
+				transition: 0.2s;
+			}
+
+			a:hover {
+				color: #ccc;
+			}
+
+			/* Container */
+			.container {
+				margin: 40px;
+			}
+
+			/* Name */
+			#name {
+				align-items: center;
+				display: flex;
+				justify-content: center;
+			}
+
+			/* Status */
+			#status {
+				color: #707a8a;
+				font-size: 30px;
+				margin-right: 10px;
+			}
+
+			/* That cool Spotify card that you may or may not see */
+			#spotify {
+				background-color: #1b1b1b;
+				border-radius: 8px;
+				display: none;
+				font-size: 30px;
+				margin: 15px;
+				padding: 25px;
+			}
+
+			#spotify-header {
+				align-items: center;
+				color: #ccc;
+				display: flex;
+				font-size: 23px;
+				justify-content: space-between;
+				padding: 0 10px;
+				text-transform: uppercase;
+			}
+
+			#spotify-logo {
+				color: #1db954;
+				font-size: 40px;
+				margin-left: 20px;
+			}
+
+			#spotify-body {
+				display: flex;
+				flex-direction: column;
+				font-size: 25px;
+				line-height: 1.1;
+			}
+
+			#spotify-album-cover {
+				border-radius: 8px;
+				height: 128px;
+				margin: 20px auto 10px auto;
+				width: 128px;
+			}
+
+			#spotify-title {
+				margin: 10px;
+			}
+
+			#spotify-duration {
+				pointer-events: none;
+				width: 100%;
+			}
+
+			#spotify-duration-text {
+				font-size: 20px;
+			}
+
+			#spotify-duration-elapsed {
+				float: left;
+			}
+
+			#spotify-duration-total {
+				float: right;
+			}
+
+			/* Links */
+			#links a {
+				border: 2px solid;
+				border-radius: 3px;
+				color: #fff;
+				display: block;
+				font-size: 25px;
+				margin: 10px;
+				padding: 12px;
+			}
+
+			/* Discord */
+			#links a:nth-child(1) {
+				border-color: #5865f2;
+			}
+
+			#links a:nth-child(1):hover {
+				background-color: #5865f2;
+			}
+
+			/* GitHub */
+			#links a:nth-child(2) {
+				border-color: #fff;
+			}
+
+			#links a:nth-child(2):hover {
+				background-color: #fff;
+				color: #000;
+			}
+
+			/* Aeon */
+			#links a:nth-child(3) {
+				border-color: #4577ee;
+			}
+
+			#links a:nth-child(3):hover {
+				background-color: #4577ee;
+			}
+
+			/* Recent GitHub commits */
+			#recent-github-commits {
+				display: flex;
+    			justify-content: center;
+				text-align: left;
+			}
+
+			#recent-github-commits ul {
+				margin: 0;
+			}
+
+			#recent-github-commits code {
+				color: #ffb5b5;
+				font-family: inherit;
+			}
+
+			#recent-github-commits code:hover {
+				color: #dc9292;
+			}
+
+			/* Custom status */
+			#custom-status {
+				align-items: center;
+				border-left: #ccc 5px solid;
+				border-top-left-radius: 2px;
+				border-bottom-left-radius: 2px;
+				display: inline-flex;
+				font-size: 20px;
+				margin: 40px;
+				padding: 20px;
+			}
+
+			#custom-status-emoji {
+				margin-right: 20px;
+				width: 20px;
+			}
+
+			/* Selection */
+			::selection {
+				background-color: #fff;
+				color: #000;
+			}
+
+			::-moz-selection {
+				background-color: #fff;
+				color: #000;
+			}
+
+			/* Desktop */
+			@media screen and (min-width: 1024px) {
+				.flex-container {
+					display: flex;
+					justify-content: center;
+				}
+
+				#links {
+					display: flex;
+					margin: auto;
+					max-width: 500px;
+				}
+
+				#links a {
+					width: 1000px;
+				}
+
+				#spotify {
+					max-width: 600px;
+					min-width: 500px;
+					text-align: left;
+				}
+
+				#spotify-body {
+					align-items: center;
+					flex-direction: row;
+				}
+
+				#spotify-album-cover {
+					margin: 10px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="flex-container">
+			<div class="container">
+				<a href="/">
+					<!--<img src="https://static.thenounproject.com/png/576092-200.png">-->
+				</a>
+			</div>
+
+			<div class="container">
+				<h1 id="name"><i id="status" class="fa fa-circle"></i>pertinences</h1>
+
+				<p>Someone who somewhat codes</p>
+			</div>
+		</div>
+
+		<div id="spotify">
+			<div id="spotify-header">
+				<b>Listening to Spotify</b>
+				<i id="spotify-logo" class="fa fa-spotify"></i>
+			</div>
+			<div id="spotify-body">
+				<img id="spotify-album-cover">
+				<div id="spotify-title"></div>
+			</div>
+			<input id="spotify-duration" type="range">
+			<div id="spotify-duration-text">
+				<span id="spotify-duration-elapsed"></span>
+				<span id="spotify-duration-total"></span>
+			</div>
+		</div>
+
+		<div class="flex-container">
+			<div class="container">
+				<h1>Links</h1>
+
+				<div id="links">
+					<!--<a href="https://discords.com/bio/p/" target="_blank">Discord</a>-->
+					<!--<a href="https://github.com/" target="_blank">GitHub</a>-->
+					<a href="https://deso.gq" target="_blank">Idealistic</a>
+				</div>
+			</div>
+			
+			<div class="container">
+				<h1>Recent GitHub Commits</h1>
+
+				<div id="recent-github-commits"></div>
+			</div>
+		</div>
+
+		<p id="custom-status">Hello I guess</p>
+		<script>
+			/* Yes, I comment my code, so what? ~Pertinences */
+
+			// Status colors
+			const STATUS_COLORS = {
+				offline: "#707a8a",
+				online: "#3ba55c",
+				idle: "#faa61a",
+				dnd: "#f04747"
+			};
+
+			// This is for clearing out previous Spotify elapsed duration update interval (as the name indicates)
+			let spotifyElapsedDurationUpdateInterval;
+
+			// A cool duration formatter made by yours truly
+			function formatSongDuration(milliseconds) {
+				let hours = 0,
+					minutes = 0,
+					seconds = 0;
+
+				while (milliseconds >= 3600000) milliseconds -= 3600000, hours++;
+				while (milliseconds >= 60000) milliseconds -= 60000, minutes++;
+				while (milliseconds >= 1000) milliseconds -= 1000, seconds++;
+
+				return `${hours ? `${hours}:` : ""}${hours ? minutes.toString().padStart(2, "0") : minutes}:${seconds.toString().padStart(2, "0")}`;
+			}
+
+			// GitHub commits
+			fetch("https://api.github.com/users/pertinences/events").then(_res => _res.json()).then(_entry =>
+				document.getElementById("recent-github-commits").innerHTML = `<ul>${_entry.filter(_entry => _entry.type === "PushEvent").map(_entry => `<li><a href="${_entry.payload.commits[0].url.replace(/api\.|\/repos/g, "")}" target="_blank"><code>${_entry.payload.commits[0].message}</code></a> on <a href="${_entry.repo.url.replace(/api\.|\/repos/g, "")}" target="_blank"><code>${_entry.repo.name}</code></a></li>`).join("")}</ul>`
+			).catch(() => null);
+
+			// Fun part
+			async function refreshPresence() {
+				// Fetch my presence using Lanyard (Saw that EGGSY used this for his site. Thank you EGGSY!)
+				const presence = (await fetch("https://api.lanyard.rest/v1/users/664256406891003904").then(_res => _res.json()).catch(() => null))?.data;
+				if (!presence) return;
+
+				//
+				//
+				//
+				// Status
+				//
+				//
+				//
+
+				
+				
+				// Set status title
+				document.getElementById("name").title = presence.discord_status === "dnd" ? "Do not disturb" : presence.discord_status[0].toUpperCase() + presence.discord_status.slice(1);
+
+				// Set status icon color
+				document.getElementById("status").style.color = STATUS_COLORS[presence.discord_status];
+
+				// Find and set custom status
+				const customStatus = presence.activities.find(_activity => _activity.name === "Custom Status");
+				
+				
+				
+				if (customStatus) document.getElementById("custom-status").innerHTML = `${customStatus.emoji?.id ? `<img id="custom-status-emoji" src="https://cdn.discordapp.com/emojis/${customStatus.emoji.id}.${customStatus.emoji.animated ? "gif" : "png"}?v=1">` : ""} <img id="custom-status-emoji" src="https://i.pinimg.com/originals/c1/af/23/c1af23c7c8fe2d13230503c6bc86b84b.png"> ${customStatus.state}`;
+
+				//
+				//
+				//
+				// Spotify
+				//
+				//
+				//
+
+				// Find Spotify presence
+				const spotifyPresence = presence.activities.find(_activity => _activity.name === "Spotify");
+
+				if (!spotifyPresence) {
+					clearInterval(spotifyElapsedDurationUpdateInterval);
+					return document.getElementById("spotify").style.display = "none";
+				}
+
+				// Set album cover, or user's avatar if unavailable
+				document.getElementById("spotify-album-cover").src = spotifyPresence.assets.large_image?.replace("spotify:", "https://i.scdn.co/image/") ?? (presence.discord_user.avatar ? `https://cdn.discordapp.com/avatars/${presence.discord_user.id}/${presence.discord_user.avatar}` : `https://cdn.discordapp.com/embed/avatars/${presence.discord_user.discriminator % 5}.png`);
+
+				// Set title, artist, and album
+				document.getElementById("spotify-title").innerHTML = `<a href="${spotifyPresence.sync_id ? `https://open.spotify.com/track/${spotifyPresence.sync_id}` : ""}" target="_blank"><b>${spotifyPresence.details} <small><i class="fa fa-external-link"></i></small></b></a><br><small>by ${spotifyPresence.state.split(";").join("")}<br>on ${spotifyPresence.assets.large_text}</small>`;
+
+				// Total duration
+				const totalDuration = spotifyPresence.timestamps.end - spotifyPresence.timestamps.start;
+
+				// Function to get elapsed duration
+				const getElapsedDuration = () => {
+					const elapsedDuration = Date.now() - spotifyPresence.timestamps.start - 1000;
+					return elapsedDuration > totalDuration ? totalDuration : elapsedDuration;
+				};
+
+				// Function to update elapsed duration
+				const updateElapsedDuration = () => {
+					document.getElementById("spotify-duration").value = getElapsedDuration() / totalDuration * 100;
+					document.getElementById("spotify-duration-elapsed").innerText = formatSongDuration(getElapsedDuration());
+				};
+
+				// Update elapsed duration
+				updateElapsedDuration();
+
+				// Clear the old elapsed duration update interval
+				clearInterval(spotifyElapsedDurationUpdateInterval);
+
+				// Set the new elapsed duration update interval
+				spotifyElapsedDurationUpdateInterval = setInterval(updateElapsedDuration, 1000);
+
+				// Set total duration text
+				document.getElementById("spotify-duration-total").innerText = formatSongDuration(totalDuration);
+
+				// Display the element
+				document.getElementById("spotify").style.display = "inline-block";
+			}
+
+			// Do this first:
+			refreshPresence();
+
+			// ...and then do it again every 5 seconds.
+			setInterval(refreshPresence, 5000);
+		</script>
+	</body>
+</html>
