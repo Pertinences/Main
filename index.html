@@ -254,6 +254,9 @@
 					<!--<img src="https://static.thenounproject.com/png/576092-200.png">-->
 				</a>
 			</div>
+			
+			
+			
 
 			<div class="container">
 				<h1 id="name"><i id="status" class="fa fa-circle"></i>pertinences</h1>
@@ -261,8 +264,10 @@
 				<p>Someone who somewhat codes</p>
 			</div>
 		</div>
+		
+		
 
-		<div id="spotify">
+		<!--<div id="spotify">
 			<div id="spotify-header">
 				<b>Listening to Spotify</b>
 				<i id="spotify-logo" class="fa fa-spotify"></i>
@@ -276,12 +281,31 @@
 				<span id="spotify-duration-elapsed"></span>
 				<span id="spotify-duration-total"></span>
 			</div>
-		</div>
+		</div>-->
 
+		<div id="spotify" style="display: inline-block;">
+			<div id="spotify-header">
+				<b>Listening to Spotify</b>
+				<i id="spotify-logo" class="fa fa-spotify"></i>
+			</div>
+			<div id="spotify-body">
+				<img id="spotify-album-cover" src="https://i.scdn.co/image/ab67616d0000b273175c577a61aa13d4fb4b6534">
+				<div id="spotify-title"><a href="https://open.spotify.com/track/5bJ1DrEM4hNCafcDd1oxHx" target="_blank"><b>Self Care <small><i class="fa fa-external-link"></i></small></b></a><br><small>by Mac Miller<br>on Swimming
+</small></div>
+			</div>
+			<!--<input id="spotify-duration" type="range">
+			<div id="spotify-duration-text">
+				<span id="spotify-duration-elapsed">0:00</span>
+				<span id="spotify-duration-total">2:55</span>
+			</div>-->
+		</div>
+		
 		<div class="flex-container">
 			<div class="container">
 				<h1>Links</h1>
 
+				
+				
 				<div id="links">
 					<!--<a href="https://discords.com/bio/p/" target="_blank">Discord</a>-->
 					<!--<a href="https://github.com/" target="_blank">GitHub</a>-->
@@ -295,7 +319,9 @@
 				<div id="recent-github-commits"></div>
 			</div>-->
 		</div>
-
+		
+		
+		
 		<p id="custom-status">Hello I guess</p>
 		<script>
 			/* Yes, I comment my code, so what? ~Pertinences */
@@ -369,10 +395,11 @@
 				// Find Spotify presence
 				const spotifyPresence = presence.activities.find(_activity => _activity.name === "Spotify");
 
-				if (!spotifyPresence) {
+				// Spotify Presence
+				/*if (!spotifyPresence) {
 					clearInterval(spotifyElapsedDurationUpdateInterval);
 					return document.getElementById("spotify").style.display = "none";
-				}
+				}*/
 
 				// Set album cover, or user's avatar if unavailable
 				document.getElementById("spotify-album-cover").src = spotifyPresence.assets.large_image?.replace("spotify:", "https://i.scdn.co/image/") ?? (presence.discord_user.avatar ? `https://cdn.discordapp.com/avatars/${presence.discord_user.id}/${presence.discord_user.avatar}` : `https://cdn.discordapp.com/embed/avatars/${presence.discord_user.discriminator % 5}.png`);
