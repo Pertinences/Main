@@ -7,8 +7,8 @@
 		<meta name="author" content="pertinences">
 		<meta name="theme-color" content="#ffffff">
 		<meta name="description" content="pertinences's website">
-		<meta name="og:image" content="https://dopa.pw/imgs/logo.png">
-		<link rel="icon" type="image/png" href="og-pert.png">
+		<meta name="og:image" content="https://cdn.discordapp.com/avatars/664623653891342356/7d215024a408b777be6ed4b83b5dcbdb.png">
+		<link rel="icon" type="image/png" href="https://cdn.discordapp.com/avatars/664623653891342356/7d215024a408b777be6ed4b83b5dcbdb.png">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -260,12 +260,12 @@
 
 			<div class="container">
 				<h1 id="name"><i id="status" class="fa fa-circle"></i>pertinences</h1>
-
-				<p>Someone on the internet</p>
+				<p id="output"></p>
 			</div>
 		</div>
+
 		
-		
+	
 
 		<!--<div id="spotify">
 			<div id="spotify-header">
@@ -282,7 +282,7 @@
 				<span id="spotify-duration-total"></span>
 			</div>
 		</div>-->
-			<div class="flex-container">
+			<!--<div class="flex-container">
 			<div class="container">
 				<h1>Spotify</h1>
 
@@ -297,21 +297,19 @@
 					<div id="spotify-title"><a href="https://open.spotify.com/track/5bJ1DrEM4hNCafcDd1oxHx" target="_blank"><b>Self Care <small><i class="fa fa-external-link"></i></small></b></a><br><small>by Mac Miller<br>on Swimming
 						</small></div>
 					</div>
-					<!--<input id="spotify-duration" type="range">
+					<input id="spotify-duration" type="range">
 					<div id="spotify-duration-text">
 						<span id="spotify-duration-elapsed">0:00</span>
 						<span id="spotify-duration-total">2:55</span>
-					</div>-->
+					</div>
 				</div>
 		
 			</div>
-		</div>
+		</div>-->
 				
 		<div class="flex-container">
 			<div class="container">
 				<h1>Links</h1>
-
-				
 				
 				<div id="links">
 					<a href="https://discords.com/bio/p/pertinences" target="_blank">Discord</a>
@@ -329,10 +327,18 @@
 		
 		
 		
+		
 		<p id="custom-status"><img id="custom-status-emoji" src="https://i.pinimg.com/originals/c1/af/23/c1af23c7c8fe2d13230503c6bc86b84b.png"> I'd be best to do something productive?</p>
 		<script>
 			/* Yes, I comment my code, so what? ~Pertinences */
 
+			// Advise Message
+			fetch("https://api.adviceslip.com/advice").then(_res => _res.json()).then(_entry => {
+				console.log(_entry);
+				document.getElementById('output').innerHTML = `${_entry.slip.advice}`
+			});
+			
+			
 			// Status colors
 			const STATUS_COLORS = {
 				offline: "#707a8a",
