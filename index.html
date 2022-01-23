@@ -195,6 +195,7 @@
 				font-size: 20px;
 				margin: 40px;
 				padding: 20px;
+				border-color: #1580d1;
 			}
 
 			#custom-status-emoji {
@@ -335,13 +336,25 @@
 		
 		
 		<h2 id="name"><i id="status" class="fa fa-circle"></i> Dopa <p id="custom-status"><img id="custom-status-emoji" src="https://i.pinimg.com/originals/c1/af/23/c1af23c7c8fe2d13230503c6bc86b84b.png">Spend time wisely</p></h2>
+		
+		
+		<h2 id="custom-status" > <p id="output" ></p> </h2>
+		
 		<script>
 			/* Yes, I comment my code, so what? ~Pertinences */
 
 			// Advise Message
-			fetch("https://api.adviceslip.com/advice").then(_res => _res.json()).then(_entry => {
-				console.log(_entry);
-				document.getElementById('output').innerHTML = `${_entry.slip.advice}`
+			fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fwww.tradingview.com%2Fu%2FSignalProvider%2F&selector=.js-widget-idea__popup.apply-overflow-tooltip.tv-widget-idea__title&scrape=text&spaced=true&pretty=true").then(_res => _res.json()).then(_entry => {
+				var allItems = _entry;
+
+				var result;
+				for (var item in allItems.result)  {
+					if (item[0]) {
+						var result = allItems.result[item];
+					};
+				};
+				
+				document.getElementById('output').innerHTML = `${result[0]}`;
 			});
 			
 			
