@@ -246,21 +246,28 @@
 					margin: 10px;
 				}
 			}
+			
+			/* Center Box Div */
+			.ideal_box{width:100%;text-align:center;}
+			
+			/* Box Wrapper */
+			@media only screen and (min-width:1024px){
+				.ideal_boxWrapper{display:flex;}
+			}
 		</style>
 	</head>
 	<body>
 		
 		
 		<div class="flex-container">
-				<div class="container">				
-				<div id="links">
-					
-					<a href="index.html">Home</a>
-					<a href="bot.html">Idealistic</a>
-					<a href="https://discords.com/bio/p/pertinences" target="_blank">Discord</a>
+				<div class="container">
+					<div id="links">
+						<a href="index.html">Home</a>
+						<a href="bot.html">Idealistic</a>
+						<a href="https://www.bible.com/bible/59/GEN.1.ESV" target="_blank">Bible</a>
+					</div>
 				</div>
-			</div>
-			
+		</div>
 		
 			<!--<div class="container">
 				<a href="/">
@@ -275,7 +282,7 @@
 				<h1 id="name"><i id="status" class="fa fa-circle"></i>dopa</h1>
 				<p id="output"></p>
 			</div>-->
-		</div>
+		
 
 		
 	
@@ -332,31 +339,138 @@
 		</div>-->
 		
 		
+		<div class="ideal_boxWrapper">
+			<div class="ideal_box">
+				<h2>Bible Verses</h2>
+				<li>
+					<h2 id="custom-status" > <p id="en-output" ></p> </h2>
+				</li>
+			</div>
+			<div class="ideal_box">
+				<h2>Versos de la Biblia</h2>
+				<li>
+					<h2 id="custom-status" > <p id="es-output" ></p> </h2>
+				</li>
+			</div>
+		</div>
+		
+				<div class="ideal_boxWrapper">
+					<div class="ideal_box">
+						<h2>圣经经文</h2>
+						<li>
+							<h2 id="custom-status" > <p id="cn-output" ></p> </h2>
+						</li>
+					</div>	
+				</div>
 		
 		
 		
-		<h2 id="name"><i id="status" class="fa fa-circle"></i> Dopa <p id="custom-status"><img id="custom-status-emoji" src="https://i.pinimg.com/originals/c1/af/23/c1af23c7c8fe2d13230503c6bc86b84b.png">Spend time wisely</p></h2>
+		
+					
+		<h2 id="name"><i id="status" class="fa fa-circle"></i> Dopa <p id="custom-status">📖 Listen to the gospel of the lord</p></h2>
 		
 		
-		<h2 id="custom-status" > <p id="output" ></p> </h2>
 		
-		<script>
+<script>
 			/* Yes, I comment my code, so what? ~Pertinences */
-
-			// Advise Message
-			fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fwww.tradingview.com%2Fu%2FSignalProvider%2F&selector=.js-widget-idea__popup.apply-overflow-tooltip.tv-widget-idea__title&scrape=text&spaced=true&pretty=true").then(_res => _res.json()).then(_entry => {
+			async function getVerse_EN() {
+			
+				var verse;
+			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Frandom-bible-verse&selector=body+%3E+div+%3E+div.left+%3E+div.b1+%3E+span&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
 				var allItems = _entry;
-
-				var result;
+				
 				for (var item in allItems.result)  {
 					if (item[0]) {
-						var result = allItems.result[item];
+						verse = allItems.result[item];
 					};
 				};
 				
-				document.getElementById('output').innerHTML = `${result[0]}`;
+
 			});
+				
+			var chapter;
+			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Frandom-bible-verse&selector=.b1+%3E+.vr+%3E+.vc&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
+				var allItems = _entry;
+				
+				for (var item in allItems.result)  {
+					if (item[0]) {
+						chapter = allItems.result[item];
+					};
+				};
+			});
+
+			document.getElementById('en-output').innerHTML = ` <mark>${chapter}</mark> `;
+			document.getElementById('en-output').innerHTML += `${verse}`;
+
 			
+			};
+			async function getVerse_ES() {
+			
+				var verse;
+			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Fes%2Fversiculo-de-la-biblia-al-azar&selector=.v1&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
+				var allItems = _entry;
+				
+				for (var item in allItems.result)  {
+					if (item[0]) {
+						verse = allItems.result[item];
+					};
+				};
+				
+
+			});
+				
+			var chapter;
+			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Fes%2Fversiculo-de-la-biblia-al-azar&selector=.b1+%3E+.vr+%3E+.vc&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
+				var allItems = _entry;
+				
+				for (var item in allItems.result)  {
+					if (item[0]) {
+						chapter = allItems.result[item];
+					};
+				};
+			});
+
+			document.getElementById('es-output').innerHTML = ` <mark>${chapter}</mark> `;
+			document.getElementById('es-output').innerHTML += `${verse}`;
+
+			
+			};
+	async function getVerse_CN() {
+			
+				var verse;
+			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Ftc%2F%25E9%259A%25A8%25E6%25A9%259F%25E8%2581%2596%25E7%25B6%2593%25E9%2587%2591%25E5%258F%25A5&selector=.v1&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
+				var allItems = _entry;
+				
+				for (var item in allItems.result)  {
+					if (item[0]) {
+						verse = allItems.result[item];
+					};
+				};
+				
+
+			});
+				
+			var chapter;
+			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Ftc%2F%25E9%259A%25A8%25E6%25A9%259F%25E8%2581%2596%25E7%25B6%2593%25E9%2587%2591%25E5%258F%25A5&selector=.b1+%3E+.vr+%3E+.vc&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
+				var allItems = _entry;
+				
+				for (var item in allItems.result)  {
+					if (item[0]) {
+						chapter = allItems.result[item];
+					};
+				};
+			});
+
+			document.getElementById('cn-output').innerHTML = ` <mark>${chapter}</mark> `;
+			document.getElementById('cn-output').innerHTML += `${verse}`;
+
+			
+			};
+	
+	
+			getVerse_EN();
+			getVerse_ES();
+			getVerse_CN();
 			
 			// Status colors
 			const STATUS_COLORS = {
