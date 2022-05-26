@@ -283,60 +283,6 @@
 				<p id="output"></p>
 			</div>-->
 		
-
-		
-	
-
-		<!--<div id="spotify">
-			<div id="spotify-header">
-				<b>Listening to Spotify</b>
-				<i id="spotify-logo" class="fa fa-spotify"></i>
-			</div>
-			<div id="spotify-body">
-				<img id="spotify-album-cover">
-				<div id="spotify-title"></div>
-			</div>
-			<input id="spotify-duration" type="range">
-			<div id="spotify-duration-text">
-				<span id="spotify-duration-elapsed"></span>
-				<span id="spotify-duration-total"></span>
-			</div>
-		</div>-->
-			<!--<div class="flex-container">
-			<div class="container">
-				<h1>Spotify</h1>
-
-			<div id="spotify" style="display: inline-block;">
-				<div id="spotify-header">
-					<b>Listening to Spotify</b>
-					<i id="spotify-logo" class="fa fa-spotify"></i>
-				</div>
-
-				<div id="spotify-body">
-						<img id="spotify-album-cover" src="https://i.scdn.co/image/ab67616d0000b273175c577a61aa13d4fb4b6534">
-					<div id="spotify-title"><a href="https://open.spotify.com/track/5bJ1DrEM4hNCafcDd1oxHx" target="_blank"><b>Self Care <small><i class="fa fa-external-link"></i></small></b></a><br><small>by Mac Miller<br>on Swimming
-						</small></div>
-					</div>
-					<input id="spotify-duration" type="range">
-					<div id="spotify-duration-text">
-						<span id="spotify-duration-elapsed">0:00</span>
-						<span id="spotify-duration-total">2:55</span>
-					</div>
-				</div>
-		
-			</div>
-		</div>-->
-				
-		
-		
-		<!--<div class="flex-container">
-			
-			<div class="container">
-				<h1>Recent GitHub Commits</h1>
-
-				<div id="recent-github-commits"></div>
-			</div>
-		</div>-->
 		
 		
 		<div class="ideal_boxWrapper">
@@ -352,16 +298,18 @@
 					<h2 id="custom-status" > <p id="es-output" ></p> </h2>
 				</li>
 			</div>
+			
 		</div>
 		
-				<div class="ideal_boxWrapper">
-					<div class="ideal_box">
-						<h2>圣经经文</h2>
-						<li>
-							<h2 id="custom-status" > <p id="cn-output" ></p> </h2>
-						</li>
-					</div>	
-				</div>
+		
+		<div class="ideal_boxWrapper">
+			<div class="ideal_box">
+				<h2>圣经经文</h2>
+					<li>
+						<h2 id="custom-status" > <p id="cn-output" ></p> </h2>
+					</li>
+			</div>	
+		</div>
 		
 		
 		
@@ -370,107 +318,93 @@
 		<h2 id="name"><i id="status" class="fa fa-circle"></i> Dopa <p id="custom-status">📖 Listen to the gospel of the lord</p></h2>
 		
 		
-		
 <script>
-			/* Yes, I comment my code, so what? ~Pertinences */
-			async function getVerse_EN() {
+	
+			async function EN_Verse() {
 			
-				var verse;
-			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Frandom-bible-verse&selector=body+%3E+div+%3E+div.left+%3E+div.b1+%3E+span&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
+				let verse = [];
+			await fetch("https://web.scraper.workers.dev/?url=https://dailyverses.net/random-bible-verse&selector=body > div > div.left > div.b1 > span,.b1 > .vr > .vc&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
 				var allItems = _entry;
+				
 				
 				for (var item in allItems.result)  {
 					if (item[0]) {
-						verse = allItems.result[item];
+						verse.push(allItems.result[item]);
 					};
 				};
 				
 
 			});
-				
-			var chapter;
-			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Frandom-bible-verse&selector=.b1+%3E+.vr+%3E+.vc&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
-				var allItems = _entry;
-				
-				for (var item in allItems.result)  {
-					if (item[0]) {
-						chapter = allItems.result[item];
-					};
-				};
-			});
-
-			document.getElementById('en-output').innerHTML = ` <mark>${chapter}</mark> `;
-			document.getElementById('en-output').innerHTML += `${verse}`;
+			
+			document.getElementById('en-output').innerHTML = ` <mark>${verse[1]}</mark> `;
+			document.getElementById('en-output').innerHTML += `${verse[0]}`;
 
 			
 			};
-			async function getVerse_ES() {
 			
-				var verse;
-			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Fes%2Fversiculo-de-la-biblia-al-azar&selector=.v1&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
+			/*
+				=========================
+				=========================
+			*/
+			
+			async function ES_Verse() {
+			
+				let verse = [];
+			await fetch("https://web.scraper.workers.dev/?url=https://dailyverses.net/es/versiculo-de-la-biblia-al-azar&selector=.v1,.b1 > .vr > .vc&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
 				var allItems = _entry;
 				
 				for (var item in allItems.result)  {
 					if (item[0]) {
-						verse = allItems.result[item];
+						verse.push(allItems.result[item]);
+						
 					};
 				};
 				
 
 			});
-				
-			var chapter;
-			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Fes%2Fversiculo-de-la-biblia-al-azar&selector=.b1+%3E+.vr+%3E+.vc&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
-				var allItems = _entry;
-				
-				for (var item in allItems.result)  {
-					if (item[0]) {
-						chapter = allItems.result[item];
-					};
-				};
-			});
+		
 
-			document.getElementById('es-output').innerHTML = ` <mark>${chapter}</mark> `;
-			document.getElementById('es-output').innerHTML += `${verse}`;
+			document.getElementById('es-output').innerHTML = ` <mark>${verse[1]}</mark> `;
+			document.getElementById('es-output').innerHTML += `${verse[0]}`;
 
 			
 			};
-	async function getVerse_CN() {
 			
-				var verse;
-			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Ftc%2F%25E9%259A%25A8%25E6%25A9%259F%25E8%2581%2596%25E7%25B6%2593%25E9%2587%2591%25E5%258F%25A5&selector=.v1&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
+			/*
+				=========================
+				=========================
+			*/
+			
+			
+			async function CN_Verse() {
+			
+				
+			let verse = [];
+			await fetch("https://web.scraper.workers.dev/?url=https://dailyverses.net/tc/隨機聖經金句&selector=.b1 > .vr > .vc,body > div > div.left > div.b1 > span&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
 				var allItems = _entry;
 				
 				for (var item in allItems.result)  {
 					if (item[0]) {
-						verse = allItems.result[item];
-					};
-				};
-				
-
-			});
-				
-			var chapter;
-			await fetch("https://web.scraper.workers.dev/?url=https%3A%2F%2Fdailyverses.net%2Ftc%2F%25E9%259A%25A8%25E6%25A9%259F%25E8%2581%2596%25E7%25B6%2593%25E9%2587%2591%25E5%258F%25A5&selector=.b1+%3E+.vr+%3E+.vc&scrape=text&pretty=true").then(_res => _res.json()).then(_entry => {
-				var allItems = _entry;
-				
-				for (var item in allItems.result)  {
-					if (item[0]) {
-						chapter = allItems.result[item];
+						verse.push(allItems.result[item]);
 					};
 				};
 			});
 
-			document.getElementById('cn-output').innerHTML = ` <mark>${chapter}</mark> `;
-			document.getElementById('cn-output').innerHTML += `${verse}`;
+			console.log(verse);
+			document.getElementById('cn-output').innerHTML = ` <mark>${verse[0]}</mark> `;
+			document.getElementById('cn-output').innerHTML += `${verse[1]}`;
 
 			
 			};
 	
-	
-			getVerse_EN();
-			getVerse_ES();
-			getVerse_CN();
+			/*
+				=========================
+				=========================
+			*/
+			PF_Proxies();
+			EN_Verse();
+			ES_Verse();
+			CN_Verse();
 			
 			// Status colors
 			const STATUS_COLORS = {
@@ -479,27 +413,6 @@
 				idle: "#faa61a",
 				dnd: "#f04747"
 			};
-
-			// This is for clearing out previous Spotify elapsed duration update interval (as the name indicates)
-			let spotifyElapsedDurationUpdateInterval;
-
-			// A cool duration formatter made by yours truly
-			function formatSongDuration(milliseconds) {
-				let hours = 0,
-					minutes = 0,
-					seconds = 0;
-
-				while (milliseconds >= 3600000) milliseconds -= 3600000, hours++;
-				while (milliseconds >= 60000) milliseconds -= 60000, minutes++;
-				while (milliseconds >= 1000) milliseconds -= 1000, seconds++;
-
-				return `${hours ? `${hours}:` : ""}${hours ? minutes.toString().padStart(2, "0") : minutes}:${seconds.toString().padStart(2, "0")}`;
-			}
-
-			// GitHub commits
-			fetch("https://api.github.com/users/pertinences/events").then(_res => _res.json()).then(_entry =>
-				document.getElementById("recent-github-commits").innerHTML = `<ul>${_entry.filter(_entry => _entry.type === "PushEvent").map(_entry => `<li><a href="${_entry.payload.commits[0].url.replace(/api\.|\/repos/g, "")}" target="_blank"><code>${_entry.payload.commits[0].message}</code></a> on <a href="${_entry.repo.url.replace(/api\.|\/repos/g, "")}" target="_blank"><code>${_entry.repo.name}</code></a></li>`).join("")}</ul>`
-			).catch(() => null);
 
 			// Fun part
 			async function refreshPresence() {
@@ -530,58 +443,6 @@
 				
 				if (customStatus) document.getElementById("custom-status").innerHTML = `${customStatus.emoji?.id ? `<img id="custom-status-emoji" src="https://cdn.discordapp.com/emojis/${customStatus.emoji.id}.${customStatus.emoji.animated ? "gif" : "png"}?v=1">` : ""} <img id="custom-status-emoji" src="https://i.pinimg.com/originals/c1/af/23/c1af23c7c8fe2d13230503c6bc86b84b.png"> ${customStatus.state}`;
 
-				//
-				//
-				//
-				// Spotify
-				//
-				//
-				//
-
-				// Find Spotify presence
-				const spotifyPresence = presence.activities.find(_activity => _activity.name === "Spotify");
-
-				// Spotify Presence
-				/*if (!spotifyPresence) {
-					clearInterval(spotifyElapsedDurationUpdateInterval);
-					return document.getElementById("spotify").style.display = "none";
-				}*/
-
-				// Set album cover, or user's avatar if unavailable
-				document.getElementById("spotify-album-cover").src = spotifyPresence.assets.large_image?.replace("spotify:", "https://i.scdn.co/image/") ?? (presence.discord_user.avatar ? `https://cdn.discordapp.com/avatars/${presence.discord_user.id}/${presence.discord_user.avatar}` : `https://cdn.discordapp.com/embed/avatars/${presence.discord_user.discriminator % 5}.png`);
-
-				// Set title, artist, and album
-				document.getElementById("spotify-title").innerHTML = `<a href="${spotifyPresence.sync_id ? `https://open.spotify.com/track/${spotifyPresence.sync_id}` : ""}" target="_blank"><b>${spotifyPresence.details} <small><i class="fa fa-external-link"></i></small></b></a><br><small>by ${spotifyPresence.state.split(";").join("")}<br>on ${spotifyPresence.assets.large_text}</small>`;
-
-				// Total duration
-				const totalDuration = spotifyPresence.timestamps.end - spotifyPresence.timestamps.start;
-
-				// Function to get elapsed duration
-				const getElapsedDuration = () => {
-					const elapsedDuration = Date.now() - spotifyPresence.timestamps.start - 1000;
-					return elapsedDuration > totalDuration ? totalDuration : elapsedDuration;
-				};
-
-				// Function to update elapsed duration
-				const updateElapsedDuration = () => {
-					document.getElementById("spotify-duration").value = getElapsedDuration() / totalDuration * 100;
-					document.getElementById("spotify-duration-elapsed").innerText = formatSongDuration(getElapsedDuration());
-				};
-
-				// Update elapsed duration
-				updateElapsedDuration();
-
-				// Clear the old elapsed duration update interval
-				clearInterval(spotifyElapsedDurationUpdateInterval);
-
-				// Set the new elapsed duration update interval
-				spotifyElapsedDurationUpdateInterval = setInterval(updateElapsedDuration, 1000);
-
-				// Set total duration text
-				document.getElementById("spotify-duration-total").innerText = formatSongDuration(totalDuration);
-
-				// Display the element
-				document.getElementById("spotify").style.display = "inline-block";
 			}
 
 			// Do this first:
